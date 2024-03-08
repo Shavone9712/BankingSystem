@@ -1,0 +1,5 @@
+INSERT INTO CUSTOMER(name) VALUES ('Brian');
+INSERT INTO CUSTOMER(name) VALUES ('Vanesh Ganesh');
+INSERT INTO CUSTOMER(name) VALUES ('Mohammad Bin Hussein');
+INSERT INTO CUSTOMER(name) VALUES ('Chong Yuk Huat');
+INSERT INTO CUSTOMER(name) VALUES ('CK Low');
