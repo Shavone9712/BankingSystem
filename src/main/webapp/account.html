@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="/accountcontroller.js"></script>
+        <title>Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body ng-app="BankingSystem" ng-controller="AccountController">
+        <div>
+            <button ng-click="backToPrevious()" class="button-back">Go back</button>
+        </div>
+        <table>
+            <tr>
+                <th colspan="2">Update Account</th>
+            </tr>
+            <tr>
+                <td>Account</td>
+                <td>{{account.id}}</td>
+            </tr>
+            <tr>
+                <td>Owner</td>
+                <td>{{customer.name}}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>{{account.status}}</td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td>RM {{account.amount}}</td>
+            </tr>
+        </table>
+        <div ng-show="account.status !== 'Closed' ">
+            <button ng-click="confirmDeposit()" class="button-back">Deposit</button>
+            <button ng-click="confirmWithdraw()" class="button-back">Withdraw</button>
+        </div>
+        
+        <form ng-submit="updateAccount()">
+            <div ng-show="deposit">
+                <div>Please enter an amount for deposit.</div>
+                <div><input type="text" ng-model="accountForm.amount" /></div>
+                <div ng-show="message">{{message}}</div>
+            </div>
+            <div ng-show="withdraw">
+                <div>Please enter an amount to withdraw.</div>
+                <div><input type="text" ng-model="accountForm.amount" /></div>
+                <div ng-show="message">{{message}}</div>
+            </div>
+            <input type="submit" value="Save" ng-show="withdraw || deposit" class="blue-button" />
+            <button ng-click="cancel()" ng-show="withdraw || deposit" class="blue-button">Cancel</button>
+        </form>
+    </body>
+</html>

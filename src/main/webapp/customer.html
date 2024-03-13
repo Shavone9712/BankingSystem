@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="/customercontroller.js"></script>
+        <title>Customer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body ng-app="BankingSystem" ng-controller="CustomerController">        
+        <h1>{{customer.name}}</h1>
+        <div>
+            <button ng-click="addAccount(customer)" class="button-back">Add New Account</button>
+            <button ng-click="backToPrevious()" class="button-back">Go back</button>
+        </div>
+        <table>
+            <th>Account ID</th>
+            <th>Status</th>
+            <th>Amount (RM)</th>
+            <th>Operations</th>
+
+            <tr ng-repeat="account in customer.accountList">
+                <td>{{account.id}}</td>
+                <td>{{account.status}}</td>
+                <td>{{account.amount}}</td>
+                <td><a ng-show="account.status !== 'Closed' " ng-click="updateAccount(account, customer)" class="blue-button">Update</a>
+                    <a ng-show="account.status !== 'Closed' ">|</a> <a ng-show="account.status !== 'Closed' " ng-click="closeAccount(account, customer)" class="blue-button">Close</a>
+<!--                    <a ng-show="account.status === 'Closed' && account.amount >0 " ng-click="" class="blue-button">Transfer balance</a>
+                    <a ng-show="account.status === 'Closed' && account.amount >0 ">|</a>-->
+                    <a ng-show="account.status === 'Closed' " ng-click="updateAccount(account, customer)" class="blue-button">View</a>
+                </td>
+            </tr>
+        </table>                
+    </body>
+</html>

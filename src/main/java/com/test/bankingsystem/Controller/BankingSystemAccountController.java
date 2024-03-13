@@ -104,26 +104,27 @@ public class BankingSystemAccountController {
                 return ResponseEntity.badRequest().body("Insufficient balance");
             }            
         }else{
-            return ResponseEntity.badRequest().body("Please enter an amount for deposit. ");
+            return ResponseEntity.badRequest().body("Please enter an amount for withdraw. ");
         }
     }
     
     @PatchMapping(value = "/closeAccount/{id}")
-    public ResponseEntity<?> closeAcc(@PathVariable Long id) {        
+    public AccountDTO closeAcc(@PathVariable Long id) {        
         Account acc = new Account();
-        if(id == null){
+        /*if(id == null){
             return ResponseEntity.badRequest().body("Id invalid.");
-        }else{
+        }else{*/
             acc = service.findByAccId(id);
-            if(acc == null){
+            /*if(acc == null){
                 return ResponseEntity.ofNullable("Account not found. Please check again your account ID.");
-            }else{
+            }else{*/
                 acc.setStatus(2);
                 acc = service.updateAcc(acc.getId(), acc);                
-            }
-        }
+            /*}
+        }*/
         
-        return ResponseEntity.ok("Account closed");
+        //return ResponseEntity.ok("Account closed");
+        return service.toAccDTO(acc);
     }
     
     

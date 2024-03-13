@@ -1,0 +1,47 @@
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.28/angular-ui-router.min.js"></script>
+
+<title>Banking System</title>
+<script src="/bankcontroller.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+<body ng-app="BankingSystem" ng-controller="BankingController">
+	<h1>Banking System</h1>
+        <form ng-submit="submitCustomer()">
+            <table>
+
+                <tr>
+                    <th colspan="2">Add customer</th>
+                </tr>
+                <tr>
+                    <td>Customer Name</td>
+                    <td><input type="text" ng-model="customerForm.name" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Create"
+                                           class="blue-button" /></td>
+                </tr>
+            </table>
+        </form>
+	<table>
+		<tr>
+                        <th>ID</th>
+			<th>Customer Name</th>
+			<th>Operations</th>
+
+		</tr>
+
+		<tr ng-repeat="customer in customers">
+                        <td>{{ customer.id }}</td>
+			<td>{{ customer.name }}</td>
+			
+
+			<td><a ng-click="viewCustomer(customer)" class="blue-button">View</a></td>
+		</tr>
+
+	</table>
+</body>
+</html>
